@@ -6,7 +6,7 @@ require 'gemspec_parser'
 class AgentGemFetcher
   class <<self
     def run
-      files = client.search_code('huginn extension:gemspec')
+      files = client.search_code('huginn extension:gemspec path:/')
       files[:items].map do |file|
         data = check_gemspec(file)
         next unless data
