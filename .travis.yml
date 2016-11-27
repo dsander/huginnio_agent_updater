@@ -11,3 +11,4 @@ env:
 cache: bundler
 script:
   - bundle exec rake
+  - if [ "$TRAVIS_BRANCH" = "master" -a "$TRAVIS_PULL_REQUEST" = "false" ]; then bundle exec rake update; fi

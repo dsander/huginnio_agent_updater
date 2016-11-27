@@ -1,9 +1,12 @@
 lib = File.expand_path('../lib', __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 
-require 'agent_fetcher'
+require 'agent_updater'
+require "rspec/core/rake_task"
 require 'dotenv'
 Dotenv.load
+
+RSpec::Core::RakeTask.new(:spec)
 
 desc "Update Huginn Agents and Agent Gems on Huginn.io"
 task :update do
@@ -21,4 +24,4 @@ task :update do
   fail res.inspect unless res.code == "200"
 end
 
-task default: :update
+task default: :spec

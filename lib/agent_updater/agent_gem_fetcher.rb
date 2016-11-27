@@ -1,7 +1,6 @@
 require 'open-uri'
 require 'octokit'
 require 'active_support'
-require 'gemspec_parser'
 
 class AgentGemFetcher
   class <<self

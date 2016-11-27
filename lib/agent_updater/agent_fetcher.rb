@@ -1,5 +1,3 @@
-require 'agent_gem_fetcher'
-require 'agent_data_extractor'
 require 'json'
 
 class AgentFetcher
