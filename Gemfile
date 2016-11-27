@@ -6,3 +6,9 @@ gem 'octokit', '~> 4.3.0'
 gem 'dotenv', '~> 2.1.1'
 gem 'activesupport', '~> 5.0.0'
 gem 'rake'
+
+group :test do
+  gem 'rspec', '~> 3.5.0'
+  gem 'simplecov', '~> 0.12.0'
+  gem 'webmock', '~> 2.1.0'
+end
