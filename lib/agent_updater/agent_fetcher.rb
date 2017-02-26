@@ -4,6 +4,7 @@ class AgentFetcher
   class <<self
     def run(gem_data = AgentGemFetcher.run)
       data_extractor = AgentDataExtractor.new
+      data_extractor.prepare
 
       huginn_agents = data_extractor.load_agents
       huginn_agent_names = huginn_agents.map { |agent| agent['name'] }

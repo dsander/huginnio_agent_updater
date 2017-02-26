@@ -1,9 +1,7 @@
 class AgentDataExtractor
-  attr_reader :agent_gem
+  class ExtractionException < StandardError; end
 
-  def initialize
-    prepare
-  end
+  attr_reader :agent_gem
 
   def prepare
     clone
@@ -14,11 +12,16 @@ class AgentDataExtractor
 
   def load_agents(agent_gem = nil)
     @agent_gem = agent_gem
-    bundle if agent_gem
+    if agent_gem
+      puts "Processing #{agent_gem}"
+      bundle
+    end
     Dir.chdir('huginn') do
       output = shell_out("bundle exec rails runner #{__dir__}/extract_huginn_agents_script.rbx", 'Loading Agents ...')
       JSON.parse(output)
     end
+  rescue ExtractionException
+    []
   end
 
   private
@@ -67,7 +70,7 @@ class AgentDataExtractor
       puts "\e[31m [FAIL]\e[0m" if message
       puts "Tried executing '#{command}'"
       puts output
-      fail
+      raise ExtractionException
     end
     output
   end
