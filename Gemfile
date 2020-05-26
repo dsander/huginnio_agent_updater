@@ -7,7 +7,7 @@ gem 'parser', '~> 2.6.5.0'
 gem 'octokit', '~> 4.14.0'
 gem 'faraday', '~> 0.15.4'
 gem 'dotenv', '~> 2.7'
-gem 'activesupport', '~> 6.0.2'
+gem 'activesupport', '~> 6.0.3'
 gem 'rake'
 
 group :test do
